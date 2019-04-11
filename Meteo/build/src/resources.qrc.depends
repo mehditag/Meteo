@@ -1,0 +1,13 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+    <file>qml/main.qml</file>
+    <file>qml/Icones/Averses.svg</file>
+    <file>qml/Icones/Brouillard.svg</file>
+    <file>qml/Icones/Nuageux.svg</file>
+    <file>qml/Icones/Soleil.svg</file>
+    <file>qml/Icones/Orageux.svg</file>
+    <file>qml/Icones/Pluvieux.svg</file>
+    <file>qml/Icones/Soleil_nuageux.svg</file>
+    
+ </qresource>
+</RCC>
