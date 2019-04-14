@@ -1,4 +1,4 @@
-# Install script for directory: /home/alix/projects/Meteo/src
+# Install script for directory: /home/mehdi/Downloads/git/Meteo/Meteo/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

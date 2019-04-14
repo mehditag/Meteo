@@ -1,17 +1,21 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 
+
+
+
 Window
 {
     visible: true
     width: 600
     height: 480
+    
 
     Rectangle { 
         x : 0
         y : 0
-        width: parent.width*2/3
-        height: parent.height/2
+        width: parent.width
+        height: parent.height
         color: "honeydew"
         
         Image {
@@ -27,18 +31,15 @@ Window
                 id :msg
                 x : parent.width*0.25
                 y : parent.height*3/4
-                
                 horizontalAlignment: Text.AlignHCenter
-                text :"Ensoleillé"
+                text: temp.temp
                 fontSizeMode: Text.Fit;
-            //    minimumPointSize: 5;
-                font.pointSize: Math.min(parent.height/7 , parent.width/14 )
+                minimumPointSize: 5
+                font.pointSize: Math.max(Math.min(parent.height/7 , parent.width/14 ),5)
                 }
             
-                  
-    }     
-    
-    Rectangle {
+      
+   Rectangle {
         
         x: parent.width*2/3
         y:0
@@ -67,7 +68,7 @@ Window
                x : parent.width*0.50
            y : parent.height/6
              horizontalAlignment : Text.AlignHCenter
-            text : "25.52"
+            text : temp.temp
             fontSizeMode: Text.Fit;
           //  minimumPointSize: 5;
             font.pointSize: Math.min(parent.height/6 , parent.width/12)
@@ -127,8 +128,8 @@ Window
                 }
                 
             
-            
-    }
+         
+/*
 
     Rectangle { //Rectange du bas (estimations)
         x : 0
@@ -248,8 +249,13 @@ Window
                 
             
             
-            
-            
+         	MouseArea {
+		anchors.fill: parent
+		onClicked: function() {
+			console.log(parent.height)
+			console.log(parent.width)
+		}
+	}
             
      
         }
@@ -357,6 +363,13 @@ Window
             font.pointSize: Math.min(parent.height/8, parent.width/16)
                 }
             
+         	MouseArea {
+		anchors.fill: parent
+		onClicked: function() {
+			console.log(parent.height)
+			console.log(parent.width)
+		}
+	}
         }
         
         Rectangle {
@@ -463,6 +476,13 @@ Window
                 }
                 
             
+         	MouseArea {
+		anchors.fill: parent
+		onClicked: function() {
+			console.log(parent.height)
+			console.log(parent.width)
+		}
+	}
             
             
         }
@@ -575,5 +595,7 @@ Window
             
             
         }
+    }*/
+}
     }
 }

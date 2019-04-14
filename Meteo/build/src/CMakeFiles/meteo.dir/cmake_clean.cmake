@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "meteo_autogen"
   "CMakeFiles/meteo_autogen.dir/AutogenOldSettings.cmake"
   "qrc_resources.cpp"
+  "CMakeFiles/meteo.dir/Objets.cpp.o"
   "CMakeFiles/meteo.dir/main.cpp.o"
   "CMakeFiles/meteo.dir/qrc_resources.cpp.o"
   "CMakeFiles/meteo.dir/meteo_autogen/mocs_compilation.cpp.o"

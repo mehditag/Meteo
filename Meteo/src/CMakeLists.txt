@@ -1,4 +1,3 @@
-qt5_add_resources(meteo_SRCS resources.qrc)
-add_executable(meteo main.cpp ${meteo_SRCS})
+qt5_add_resources(testquick_SRCS resources.qrc)
+add_executable(meteo Objets.cpp main.cpp ${testquick_SRCS})
 target_link_libraries(meteo Qt5::Qml Qt5::Gui)
-
