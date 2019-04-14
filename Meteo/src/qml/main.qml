@@ -6,10 +6,10 @@ import QtQuick.Window 2.0
 
 Window
 {
+    
     visible: true
     width: 600
     height: 480
-    
 
     Rectangle { 
         x : 0
@@ -57,23 +57,24 @@ Window
            horizontalAlignment : Text.AlignHCenter
             text : "T°C"
             fontSizeMode: Text.Fit;
-         //   minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/6 , parent.width/12 )
+           minimumPointSize: 5;
+            font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5 )
             
             }
 
-        
+               
                 Text {
             id :tmpemes
                x : parent.width*0.50
            y : parent.height/6
              horizontalAlignment : Text.AlignHCenter
-            text : temp.temp
+           // text : capteur.temp                    
             fontSizeMode: Text.Fit;
           //  minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/6 , parent.width/12)
+            font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5)
             
         }
+        
         
             
            Text{
@@ -84,7 +85,7 @@ Window
                 text :"Pression"
             fontSizeMode: Text.Fit;
         //    minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/8, parent.width/16)
+            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
                 
                 }
             
@@ -97,7 +98,7 @@ Window
                 text :"991.400"
             fontSizeMode: Text.Fit;
         //    minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/8, parent.width/16)
+            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
                 }
             
              
@@ -111,7 +112,7 @@ Window
                 text :"humidity"
             fontSizeMode: Text.Fit;
        //     minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/8, parent.width/16)
+            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
                 }
                 
                       
@@ -124,10 +125,47 @@ Window
                 text :"32.02"
              fontSizeMode: Text.Fit;
          //   minimumPointSize: 5;
-            font.pointSize: Math.min(parent.height/8, parent.width/16)
+            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
                 }
                 
-            
+ 
+ }
+    }
+    
+    function update() {
+		//var t = "<b>Température</b><br>%1°"
+        console.log("Timer ok")
+        capteur.maj()
+		tmpemes.text = capteur.temp
+	}
+	
+	Timer {
+		id: globalTimer
+		interval: 1000
+		repeat: true
+		running: true
+		triggeredOnStart: true
+		onTriggered: update()
+	}
+    
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
          
 /*
 
@@ -596,6 +634,3 @@ Window
             
         }
     }*/
-}
-    }
-}
