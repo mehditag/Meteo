@@ -32,7 +32,7 @@ Window
                 x : parent.width*0.25
                 y : parent.height*3/4
                 horizontalAlignment: Text.AlignHCenter
-                text: temp.temp
+                text: "Indications"
                 fontSizeMode: Text.Fit;
                 minimumPointSize: 5
                 font.pointSize: Math.max(Math.min(parent.height/7 , parent.width/14 ),5)
@@ -51,7 +51,7 @@ Window
         
 
         Text {
-            id :tmpe
+           id :text_temp
            x : parent.width*0.15
            y : parent.height/6
            horizontalAlignment : Text.AlignHCenter
@@ -64,11 +64,11 @@ Window
 
                
                 Text {
-            id :tmpemes
+            id :temperature
                x : parent.width*0.50
            y : parent.height/6
              horizontalAlignment : Text.AlignHCenter
-           // text : capteur.temp                    
+            text : ""                  
             fontSizeMode: Text.Fit;
           //  minimumPointSize: 5;
             font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5)
@@ -78,8 +78,8 @@ Window
         
             
            Text{
-                id :pre
-           
+             
+           id :text_press
              x : parent.width*0.10
              y: parent.height*3/6
                 text :"Pression"
@@ -90,12 +90,12 @@ Window
                 }
             
            Text{
-                id :premes
+                id :pression
              x : parent.width*0.10
              y: parent.height*4/6
             
              horizontalAlignment: Text.Justify
-                text :"991.400"
+                text :""
             fontSizeMode: Text.Fit;
         //    minimumPointSize: 5;
             font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
@@ -104,7 +104,7 @@ Window
              
             
            Text{
-                id :hum
+                id :text_hum
                 x : parent.width*0.55
                 y: parent.height*3/6
           
@@ -117,12 +117,12 @@ Window
                 
                       
            Text{
-                id :hummes
+                id :humidite
                 x : parent.width*0.55
                 y: parent.height*4/6
                 
                 horizontalAlignment: Text.AlignHCenter
-                text :"32.02"
+                text :""
              fontSizeMode: Text.Fit;
          //   minimumPointSize: 5;
             font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
@@ -133,10 +133,17 @@ Window
     }
     
     function update() {
-		//var t = "<b>Température</b><br>%1°"
-        console.log("Timer ok")
-        capteur.maj()
-		tmpemes.text = capteur.temp
+		var t = "%1°"
+        var h = "%1"
+        var p= "%1"
+        D_Meteo.maj_temp()
+        D_Meteo.maj_hum()
+        D_Meteo.maj_press()
+        temperature.text = t.arg(D_Meteo.getTemp)
+        humidite.text = h.arg(D_Meteo.getHum)
+        pression.text = p.arg(D_Meteo.getPress)
+        
+		
 	}
 	
 	Timer {
