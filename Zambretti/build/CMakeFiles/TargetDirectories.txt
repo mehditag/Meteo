@@ -1,0 +1,7 @@
+/home/alix/projects/Zambretti/build/CMakeFiles/install/strip.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/edit_cache.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/zambretti.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/rebuild_cache.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/list_install_components.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/install/local.dir
+/home/alix/projects/Zambretti/build/CMakeFiles/install.dir
