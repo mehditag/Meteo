@@ -1,26 +1,35 @@
 #pragma once
 #include <QObject>
 
-class Objets : public QObject
+class Data_Meteo : public QObject
 {
 	Q_OBJECT
-	Q_PROPERTY(qint32 temp READ temp		NOTIFY tempChanged)
-    Q_PROPERTY(qint32 maj WRITE temp		NOTIFY majTemp)
+	Q_PROPERTY(qreal getTemp READ getTemp WRITE setTemp 		NOTIFY tempChanged)
+    Q_PROPERTY(qreal getHum READ getHum WRITE setHum 		NOTIFY humChanged)
+    Q_PROPERTY(qreal getPress READ getPress WRITE setPress 		NOTIFY pressChanged)
 
 
 private:
-	qint32 m_temp  = 17;
+	qreal m_temp  = 17.5;
+    qreal m_humidity = 57.5;
+    qreal m_pressure = 1000.5;
 
 signals:
 void tempChanged();
-void majTemp();
+void humChanged();
+void pressChanged();
 
 public slots:
-	//qint32 temp() const;
+	    void maj_temp();
+        void maj_hum();
+        void maj_press();
 
 public:
-	Objets();
-    qint32 temp() const;
-    void setTemp(qint32 temperature);
-    qint32 maj();
+	Data_Meteo();
+    qreal getTemp() const;
+    void setTemp(qreal temperature);
+    qreal getHum() const;
+    void setHum(qreal temperature);
+    qreal getPress() const;
+    void setPress(qreal temperature);
 };

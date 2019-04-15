@@ -4,23 +4,57 @@
 
 
 //Constructeur
-Objets::Objets() {
+Data_Meteo::Data_Meteo() {
 }
 
 //Get
-qint32  Objets::temp() const {		
+qreal  Data_Meteo::getTemp() const {		
 	return m_temp;
+    
 }
    
 //Set      
-void Objets::setTemp(qint32 temperature) {
+void Data_Meteo::setTemp(qreal temperature) {
     
     m_temp = temperature;
     
 }
 
-qint32 Objets::maj(){
-    m_temp=m_temp+1;
-    return 0;
+//Get
+qreal  Data_Meteo::getHum() const {		
+	return m_humidity;
 }
+   
+//Set      
+void Data_Meteo::setHum(qreal humidity) {
+    
+    m_humidity = humidity;
+    
+}
+
+//Get
+qreal  Data_Meteo::getPress() const {		
+	return m_pressure;
+}
+   
+//Set      
+void Data_Meteo::setPress(qreal pressure) {
+    
+    m_pressure = pressure;
+    
+}
+
+void Data_Meteo::maj_temp(){
+    m_temp=m_temp+1;
+}
+
+void Data_Meteo::maj_hum(){
+    m_humidity=m_humidity+1;
+}
+    
+    
+    void Data_Meteo::maj_press(){
+    m_pressure=m_pressure+1;
+}
+    
     

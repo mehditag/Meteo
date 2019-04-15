@@ -8,11 +8,12 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     
     
-    Objets capteur;
+    Data_Meteo D_Meteo;
     
 	QQmlApplicationEngine engine;
-	engine.rootContext()->setContextProperty("capteur", &capteur);
+	engine.rootContext()->setContextProperty("D_Meteo", &D_Meteo);
 	engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     
     return app.exec();
 }
+
