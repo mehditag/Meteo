@@ -1,4 +1,8 @@
 #include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctime>
 #include <math.h>
 using namespace std;
 
@@ -11,6 +15,23 @@ int main(int argc, char **argv) {
     int stock_pression;
     
     
+// Déterminer le mois de l'année
+  time_t temps;
+  struct tm datetime;
+  char mois[4];
+  // char date[32];
+  
+ 
+  time(&temps);
+  datetime = *localtime(&temps);
+//strftime(date, "%Y-%m-%d ", &datetime);
+  strftime(mois, 4 , "%m", &datetime);
+ 
+  int nbr_mois  =stoi(mois);
+  cout<<nbr_mois<<endl;
+  
+
+  
     
     
     for   (int pression=900; pression <1051; pression=pression+10){
@@ -19,7 +40,10 @@ int main(int argc, char **argv) {
     
     int  pression_calc = pression/ pow(1-(0.0065*altitude/288.15),5.255);
     
-    tendance = pression_calc - stock_pression;
+  //tendance = pression_calc - stock_pression;
+    tendance = stock_pression - pression_calc;
+    
+    
     cout << "tendance : "<< tendance<<endl;
     
     
@@ -28,6 +52,10 @@ int main(int argc, char **argv) {
     if ((tendance <-2)){
  
         zambretti_coefficient = 130-(10*pression_calc/81);
+        
+     /* if (mois=="04") { zambretti_coefficient = zambretti_coefficient+1;}
+        else {zambretti_coefficient = zambretti_coefficient;}
+        */
     //  cout<< "tendance descendante" <<endl;
         
   } else if (tendance >2) {
