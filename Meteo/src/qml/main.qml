@@ -18,6 +18,7 @@ Window
         color: "honeydew"
         
         Image {
+        id :meteo
             x : parent.width /7
             y : parent.height /7
             source : "Icones/Soleil.svg"
@@ -25,11 +26,23 @@ Window
             sourceSize.height : Math.min(parent.width/2, parent.height/2)
         }
 
+
+
+        Image {
+            id : tendance
+             x :parent.width*4/5
+             y: parent.height*3/4
+            source : "Icones/fleche_rising.svg"
+            sourceSize.width : Math.min(parent.width/3, parent.height/6)
+            sourceSize.height : Math.min(parent.width/3, parent.height/6)
+        }
+        
+        
             
         Text{
                 id :msg
-                x : parent.width*0.25
-                y : parent.height*2/3
+                x : parent.width*1/10
+                y : parent.height*3/4
                 horizontalAlignment: Text.AlignHCenter
                 text: "Indications"
                 fontSizeMode: Text.Fit;
@@ -69,7 +82,7 @@ Window
            x : parent.width*0.15
            y : parent.height/6
            horizontalAlignment : Text.AlignHCenter
-            text : "T°C"
+            text : "Temp"
             fontSizeMode: Text.Fit;
            minimumPointSize: 5;
             font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5 )
