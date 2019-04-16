@@ -1,5 +1,9 @@
 #pragma once
 #include <QObject>
+#include "bme280.h"
+#include "bme280_defs.h"
+#include "capteur.h"
+
 
 class Data_Meteo : public QObject
 {
@@ -13,6 +17,9 @@ private:
 	qreal m_temp  = 17.5;
     qreal m_humidity = 57.5;
     qreal m_pressure = 1000.5;
+    
+    struct bme280_dev m_dev;
+    struct bme280_data m_data;
 
 signals:
 void tempChanged();
@@ -23,6 +30,8 @@ public slots:
 	    void maj_temp();
         void maj_hum();
         void maj_press();
+        void refresh();
+        void capt_init();
 
 public:
 	Data_Meteo();

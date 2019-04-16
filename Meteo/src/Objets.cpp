@@ -1,10 +1,11 @@
 #include "Objets.h"
 #include <QDebug>
-
+#include "capteur.h"
 
 
 //Constructeur
 Data_Meteo::Data_Meteo() {
+    Data_Meteo::capt_init();
 }
 
 //Get
@@ -45,16 +46,24 @@ void Data_Meteo::setPress(qreal pressure) {
 }
 
 void Data_Meteo::maj_temp(){
-    m_temp=m_temp+1;
+    m_temp=m_data.temperature;
 }
 
 void Data_Meteo::maj_hum(){
-    m_humidity=m_humidity+1;
+    m_humidity=m_data.humidity;
 }
     
     
     void Data_Meteo::maj_press(){
-    m_pressure=m_pressure+1;
+    m_pressure=m_data.pressure/100;
 }
     
+
+void Data_Meteo::capt_init(){
+m_dev = init_capt();
+}
     
+void Data_Meteo::refresh(){
+
+m_data=sensor_data(&m_dev);
+}

@@ -6,7 +6,6 @@ import QtQuick.Window 2.0
 
 Window
 {
-    
     visible: true
     width: 600
     height: 480
@@ -19,8 +18,8 @@ Window
         color: "honeydew"
         
         Image {
-            x : parent.width /3
-            y : parent.height /8
+            x : parent.width /7
+            y : parent.height /7
             source : "Icones/Soleil.svg"
             sourceSize.width : Math.min(parent.width/2, parent.height/2)
             sourceSize.height : Math.min(parent.width/2, parent.height/2)
@@ -30,13 +29,28 @@ Window
         Text{
                 id :msg
                 x : parent.width*0.25
-                y : parent.height*3/4
+                y : parent.height*2/3
                 horizontalAlignment: Text.AlignHCenter
                 text: "Indications"
                 fontSizeMode: Text.Fit;
                 minimumPointSize: 5
                 font.pointSize: Math.max(Math.min(parent.height/7 , parent.width/14 ),5)
                 }
+            
+            
+             Text {
+            x : parent.width * 0.1
+            y : parent.height * 0.02
+            
+           horizontalAlignment: Text.AlignHCenter
+           text:new Date().toLocaleDateString(Qt.locale("fr_FR"))
+           fontSizeMode: Text.Fit;
+           minimumPointSize: 5
+           font.pointSize: Math.max(Math.min(parent.height/14 , parent.width/28 ),5)    
+            
+        }
+
+
             
       
    Rectangle {
@@ -133,15 +147,16 @@ Window
     }
     
     function update() {
-		var t = "%1°"
-        var h = "%1"
-        var p= "%1"
+		var t = "%1 °C"
+        var h = "%1 %"
+        var p= "%1 hPa"
+        D_Meteo.refresh()
         D_Meteo.maj_temp()
         D_Meteo.maj_hum()
         D_Meteo.maj_press()
-        temperature.text = t.arg(D_Meteo.getTemp)
-        humidite.text = h.arg(D_Meteo.getHum)
-        pression.text = p.arg(D_Meteo.getPress)
+        temperature.text = t.arg(D_Meteo.getTemp.toFixed(2))
+        humidite.text = h.arg(Math.round(D_Meteo.getHum))
+        pression.text = p.arg(Math.round(D_Meteo.getPress))
         
 		
 	}
