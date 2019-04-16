@@ -8,6 +8,9 @@
     <file>qml/Icones/Orageux.svg</file>
     <file>qml/Icones/Pluvieux.svg</file>
     <file>qml/Icones/Soleil_nuageux.svg</file>
+    <file>qml/Icones/fleche_falling.svg</file>
+    <file>qml/Icones/fleche_steady.svg</file>
+    <file>qml/Icones/fleche_rising.svg</file>
     
  </qresource>
 </RCC>
