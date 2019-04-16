@@ -114,11 +114,8 @@ struct bme280_dev init_capt()
 printf("\r\n BME280 Init Result is:%d \r\n",rslt);
 
 rslt = bme280_init(&dev);
-
 int8_t rslt2;
-	uint8_t settings_sel;
-	struct bme280_data comp_data;
-
+uint8_t settings_sel;
 	/* Recommended mode of operation: Indoor navigation */
 	dev.settings.osr_h = BME280_OVERSAMPLING_1X;
 	dev.settings.osr_p = BME280_OVERSAMPLING_16X;
@@ -133,6 +130,12 @@ int8_t rslt2;
 	settings_sel |= BME280_FILTER_SEL;
 	rslt2 = bme280_set_sensor_settings(settings_sel, &dev);
 	rslt2 = bme280_set_sensor_mode(BME280_NORMAL_MODE, &dev);
+
+	
+	
+   // struct bme280_data comp_data;
+
+
 return dev;
 
 //stream_sensor_data_normal_mode(&dev);
@@ -154,6 +157,7 @@ int main (int argc, char* argv[]){
 	while (1) {
 		/* Delay while the sensor completes a measurement */
 		dev.delay_ms(1000);
+        
 		rslt = bme280_get_sensor_data(BME280_ALL, &comp_data, &dev);
         
         printf("Température = %f\n", comp_data.temperature);
