@@ -1,8 +1,8 @@
 #include "bme280.h"
 #include <stdio.h>
 #include <unistd.h>
-#include <wiringPi.h>
-#include <wiringPiSPI.h>
+ #include <wiringPi.h>
+ #include <wiringPiSPI.h>
 
 //Raspberry 3B+ platform's default SPI channel
 #define channel 0  

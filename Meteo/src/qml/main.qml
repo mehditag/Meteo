@@ -15,9 +15,13 @@ Window
         y : 0
         width: parent.width
         height: parent.height
-        color: "honeydew"
+          gradient: Gradient {
+                GradientStop { position: 0.0; color: "honeydew" }
+               GradientStop { position: 1.0; color: "aquamarine" }
+               }
         
-        Image {
+        
+    Image {
         id :meteo
             x : parent.width /7
             y : parent.height /7
@@ -44,35 +48,62 @@ Window
                 x : parent.width*1/10
                 y : parent.height*3/4
                 horizontalAlignment: Text.AlignHCenter
-                text: "Indications"
+                text: "Ensoleillé"
                 fontSizeMode: Text.Fit;
                 minimumPointSize: 5
                 font.pointSize: Math.max(Math.min(parent.height/7 , parent.width/14 ),5)
                 }
             
+            Rectangle{
+        x : 0
+        y : 0
+        width: parent.width
+        height: parent.height*0.1
+        color: "transparent"
+                
             
              Text {
-            x : parent.width * 0.1
+             id :date
+            x : parent.width * 0.05
             y : parent.height * 0.02
             
            horizontalAlignment: Text.AlignHCenter
-           text:new Date().toLocaleDateString(Qt.locale("fr_FR"))
+
+           text : new Date().toLocaleDateString(Qt.locale("fr_FR"),'dddd dd MMMM yyyy')
            fontSizeMode: Text.Fit;
            minimumPointSize: 5
-           font.pointSize: Math.max(Math.min(parent.height/14 , parent.width/28 ),5)    
+           font.pointSize: Math.max(Math.min(parent.height/2 , parent.width/2 ),5)    
             
         }
+               
+             Text {
+             id :heure
+            x : parent.width * 0.75
+            y : parent.height * 0.02
+            
+           horizontalAlignment: Text.AlignHCenter
 
+           text : ""
+           fontSizeMode: Text.Fit;
+           minimumPointSize: 5
+           font.pointSize: Math.max(Math.min(parent.height/2 , parent.width/2 ),5)    
+            
+        }
+        
+        
+}
+
+            
 
             
       
-   Rectangle {
+  Rectangle {
         
         x: parent.width*2/3
-        y:0
+        y:parent.height*0.1
         width : parent.width/3
-        height : parent.height/2
-        color : "honeydew"
+        height : parent.height*0.65
+        color : "transparent"
         
    
         
@@ -80,82 +111,77 @@ Window
         Text {
            id :text_temp
            x : parent.width*0.15
-           y : parent.height/6
+           y : parent.height/8
            horizontalAlignment : Text.AlignHCenter
-            text : "Temp"
+            text : "Température"
             fontSizeMode: Text.Fit;
            minimumPointSize: 5;
             font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5 )
             
             }
 
-               
-                Text {
+
+                     Text {
             id :temperature
-               x : parent.width*0.50
-           y : parent.height/6
+            x : parent.width*0.30
+           y : parent.height*2/8
              horizontalAlignment : Text.AlignHCenter
-            text : ""                  
+            text : "22 °C"                  
             fontSizeMode: Text.Fit;
           //  minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5)
+            font.pointSize: Math.max(Math.min(parent.height/5 , parent.width/10),5)
             
         }
-        
-        
-            
-           Text{
+                   
+         Text{
              
            id :text_press
-             x : parent.width*0.10
-             y: parent.height*3/6
+             x : parent.width*0.30
+             y: parent.height*0.45
                 text :"Pression"
             fontSizeMode: Text.Fit;
         //    minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
+            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
                 
                 }
             
            Text{
                 id :pression
-             x : parent.width*0.10
-             y: parent.height*4/6
+             x : parent.width*0.30
+             y: parent.height*0.55
             
              horizontalAlignment: Text.Justify
-                text :""
+                text :"1020 hPa"
             fontSizeMode: Text.Fit;
-        //    minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
+            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
                 }
             
-             
             
-           Text{
+                Text{
                 id :text_hum
-                x : parent.width*0.55
-                y: parent.height*3/6
+                x : parent.width*0.30
+                y: parent.height*0.7
           
                 horizontalAlignment: Text.AlignHCenter
-                text :"humidity"
+                text :"Humidité"
             fontSizeMode: Text.Fit;
        //     minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
+            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
                 }
                 
                       
            Text{
                 id :humidite
-                x : parent.width*0.55
-                y: parent.height*4/6
+                x : parent.width*0.4
+                y: parent.height*0.8
                 
                 horizontalAlignment: Text.AlignHCenter
-                text :""
+                text :"35 %"
              fontSizeMode: Text.Fit;
-         //   minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/8, parent.width/16),5)
+            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
                 }
                 
- 
+
  }
     }
     
@@ -163,15 +189,19 @@ Window
 		var t = "%1 °C"
         var h = "%1 %"
         var p= "%1 hPa"
+        var i= "%1"
+        var tend="%1"
         D_Meteo.refresh()
-        D_Meteo.maj_temp()
-        D_Meteo.maj_hum()
-        D_Meteo.maj_press()
-        temperature.text = t.arg(D_Meteo.getTemp.toFixed(2))
-        humidite.text = h.arg(Math.round(D_Meteo.getHum))
-        pression.text = p.arg(Math.round(D_Meteo.getPress))
-        
-		
+          D_Meteo.maj_temp()
+          D_Meteo.maj_hum()
+          D_Meteo.maj_press()
+        //meteo.source=i.arg(D_Meteo.getImage)
+          temperature.text = t.arg(D_Meteo.getTemp.toFixed(2))
+          humidite.text = h.arg(Math.round(D_Meteo.getHum))
+          pression.text = p.arg(Math.round(D_Meteo.getPress))
+       //  msg.text = tend.arg(Math.round(D_Meteo.getZambretti))
+            heure.text= new Date().toLocaleTimeString(Qt.locale("fr_FR"),'hh:mm:ss')
+		date.text=new Date().toLocaleDateString(Qt.locale("fr_FR"),'dddd dd MMMM yyyy')
 	}
 	
 	Timer {

@@ -1,11 +1,12 @@
 #include "Objets.h"
 #include <QDebug>
 #include "capteur.h"
+#include <math.h>
 
 
 //Constructeur
 Data_Meteo::Data_Meteo() {
-    Data_Meteo::capt_init();
+     Data_Meteo::capt_init();
 }
 
 //Get
@@ -45,6 +46,11 @@ void Data_Meteo::setPress(qreal pressure) {
     
 }
 
+//Get
+QString Data_Meteo::getImage() const {		
+	return m_image;
+}
+
 void Data_Meteo::maj_temp(){
     m_temp=m_data.temperature;
 }
@@ -67,3 +73,22 @@ void Data_Meteo::refresh(){
 
 m_data=sensor_data(&m_dev);
 }
+
+void  Data_Meteo::calc_press_sea(){
+    m_press_sea=(m_pressure/ pow(1-(0.0065*m_altitude/288.15),5.255));
+}
+
+
+void Data_Meteo::calc_zambretti(qreal pression){
+    
+    m_zambretti= 30-(10*pression/81);
+}
+    
+    
+qreal Data_Meteo::getZambretti() const
+{
+    return m_zambretti;
+}
+    
+    
+    
