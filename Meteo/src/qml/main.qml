@@ -36,7 +36,7 @@ Window
             id : tendance
              x :parent.width*0.05
              y: parent.height*3/4
-            source : "Icones/fleche_rising.svg"
+            source : ""
             sourceSize.width : Math.min(parent.width/3, parent.height/6)
             sourceSize.height : Math.min(parent.width/3, parent.height/6)
         }
@@ -44,7 +44,7 @@ Window
         
             
         Text{
-                id :msg
+                id :indication
                 x : parent.width*0.25
                 y : parent.height*3/4
                 horizontalAlignment: Text.AlignHCenter
@@ -182,18 +182,20 @@ Window
         var p= "%1 hPa"
         var i= "%1"
         var tend="%1"
+        var msg="%1"
          D_Meteo.refresh()
            D_Meteo.maj_temp()
            D_Meteo.maj_hum()
            D_Meteo.maj_press()
-       //    D_Meteo.calc_tendance()
-      //  meteo.source=i.arg(D_Meteo.getImage)
+           D_Meteo.calc_tendance()
+        meteo.source=i.arg(D_Meteo.getImage)
           temperature.text = t.arg(D_Meteo.getTemp.toFixed(2))
           humidite.text = h.arg(Math.round(D_Meteo.getHum))
           pression.text = p.arg(Math.round(D_Meteo.getPress))
-       //  msg.text = tend.arg(Math.round(D_Meteo.getZambretti))
             heure.text= new Date().toLocaleTimeString(Qt.locale("fr_FR"),'hh:mm:ss')
 		date.text=new Date().toLocaleDateString(Qt.locale("fr_FR"),'dddd dd MMMM yyyy')
+        tendance.source=tend.arg(D_Meteo.getTendance)
+        indication.text = msg.arg(D_Meteo.getDescr)
 	}
 	
 	Timer {

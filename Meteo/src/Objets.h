@@ -13,7 +13,8 @@ class Data_Meteo : public QObject
     Q_PROPERTY(qreal getHum READ getHum WRITE setHum 		NOTIFY humChanged)
     Q_PROPERTY(qreal getPress READ getPress WRITE setPress 		NOTIFY pressChanged)
     Q_PROPERTY(QString getImage READ getImage       NOTIFY imageChanged)
-    Q_PROPERTY(qreal getZambretti READ getZambretti 		NOTIFY zambChanged)
+    Q_PROPERTY(QString getTendance READ getTendance		NOTIFY tendChanged)
+        Q_PROPERTY(QString getDescr READ getDescr       	NOTIFY descrChanged)
     
     
 private:
@@ -23,7 +24,10 @@ private:
     qreal m_press_sea;
     qreal m_altitude=151.5; 
     QString m_image="Icones/Orageux.svg";
-    qreal m_zambretti=2;
+    qint32 m_zambretti=2;
+    qreal m_tendance;
+    QString m_tendance_im;
+    QString m_description;
     
     std::deque<qreal> val_seconde;
     std::deque<qreal> val_minutes;
@@ -37,7 +41,8 @@ void tempChanged();
 void humChanged();
 void pressChanged();
 void imageChanged();
-void zambChanged();
+void tendChanged();
+void descrChanged();
 
 public slots:
 	    void maj_temp();
@@ -59,5 +64,6 @@ public:
     qreal getPress() const;
     void setPress(qreal temperature);
     QString getImage() const;
-    qreal getZambretti() const;
+    QString getTendance() const;
+      QString getDescr() const;
 };
