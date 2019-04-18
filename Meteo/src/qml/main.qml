@@ -34,7 +34,7 @@ Window
 
         Image {
             id : tendance
-             x :parent.width*4/5
+             x :parent.width*0.05
              y: parent.height*3/4
             source : "Icones/fleche_rising.svg"
             sourceSize.width : Math.min(parent.width/3, parent.height/6)
@@ -45,140 +45,131 @@ Window
             
         Text{
                 id :msg
-                x : parent.width*1/10
+                x : parent.width*0.25
                 y : parent.height*3/4
                 horizontalAlignment: Text.AlignHCenter
+            font.family : "Linux Biolinum";                
                 text: "Ensoleillé"
                 fontSizeMode: Text.Fit;
                 minimumPointSize: 5
-                font.pointSize: Math.max(Math.min(parent.height/7 , parent.width/14 ),5)
+                font.pointSize: Math.max(Math.min(parent.height/10 , parent.width/18 ),5)
                 }
-            
-            Rectangle{
-        x : 0
-        y : 0
-        width: parent.width
-        height: parent.height*0.1
-        color: "transparent"
-                
-            
-             Text {
-             id :date
-            x : parent.width * 0.05
-            y : parent.height * 0.02
-            
-           horizontalAlignment: Text.AlignHCenter
-
-           text : new Date().toLocaleDateString(Qt.locale("fr_FR"),'dddd dd MMMM yyyy')
-           fontSizeMode: Text.Fit;
-           minimumPointSize: 5
-           font.pointSize: Math.max(Math.min(parent.height/2 , parent.width/2 ),5)    
-            
-        }
-               
-             Text {
-             id :heure
-            x : parent.width * 0.75
-            y : parent.height * 0.02
-            
-           horizontalAlignment: Text.AlignHCenter
-
-           text : ""
-           fontSizeMode: Text.Fit;
-           minimumPointSize: 5
-           font.pointSize: Math.max(Math.min(parent.height/2 , parent.width/2 ),5)    
-            
-        }
-        
-        
-}
-
-            
 
             
       
   Rectangle {
         
-        x: parent.width*2/3
-        y:parent.height*0.1
-        width : parent.width/3
-        height : parent.height*0.65
+        x: parent.width*0.5
+        y:0
+        width : parent.width/2
+        height : parent.height
         color : "transparent"
+        
+        
+                    
+             Text {
+             id :date
+            x : parent.width * 0.20
+            y : parent.height * 0.01
+            
+           horizontalAlignment: Text.AlignHCenter
+            font.family : "Linux Biolinum";
+           text : ""
+           fontSizeMode: Text.Fit;
+           font.pointSize: Math.max(Math.min(parent.height/15 , parent.width/15 ),5)    
+            
+        }
+               
+             Text {
+             id :heure
+            x : parent.width * 0.40
+            y : parent.height * 0.12
+            
+           horizontalAlignment: Text.AlignHCenter
+            font.family : "Linux Biolinum";
+           text : ""
+           fontSizeMode: Text.Fit;
+           font.pointSize: Math.max(Math.min(parent.height*0.1 , parent.width*0.1 ),5)    
+            
+        }
         
    
         
 
         Text {
            id :text_temp
-           x : parent.width*0.15
-           y : parent.height/8
+           x : parent.width*0.30
+           y : parent.height*0.30
            horizontalAlignment : Text.AlignHCenter
-            text : "Température"
+            text : "Il fait actuellement "
+            font.family : "Linux Biolinum";
             fontSizeMode: Text.Fit;
            minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/6 , parent.width/12),5 )
+            font.pointSize: Math.max(Math.min(parent.height/21 , parent.width/21),5 )
             
             }
 
 
                      Text {
             id :temperature
-            x : parent.width*0.30
-           y : parent.height*2/8
+            x : parent.width*0.50
+           y : parent.height*0.38
              horizontalAlignment : Text.AlignHCenter
-            text : "22 °C"                  
+            text : "22 °C"       
+            font.family : "Linux Biolinum";
             fontSizeMode: Text.Fit;
           //  minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/5 , parent.width/10),5)
+            font.pointSize: Math.max(Math.min(parent.height/12 , parent.width/12),5)
             
         }
                    
          Text{
              
            id :text_press
-             x : parent.width*0.30
-             y: parent.height*0.45
+             x : parent.width*0.50
+             y: parent.height*0.55
                 text :"Pression"
+            font.family : "Linux Biolinum";                
             fontSizeMode: Text.Fit;
         //    minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
+            font.pointSize: Math.max(Math.min(parent.height/21, parent.width/21),5)
                 
                 }
             
            Text{
                 id :pression
-             x : parent.width*0.30
-             y: parent.height*0.55
-            
+             x : parent.width*0.50
+             y: parent.height*0.63
+             font.family : "Linux Biolinum";           
              horizontalAlignment: Text.Justify
                 text :"1020 hPa"
             fontSizeMode: Text.Fit;
-            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
+            font.pointSize: Math.max(Math.min(parent.height/21, parent.width/21),5)
                 }
             
             
                 Text{
                 id :text_hum
-                x : parent.width*0.30
-                y: parent.height*0.7
-          
+                x : parent.width*0.50
+                y: parent.height*0.75
+            font.family : "Linux Biolinum";          
                 horizontalAlignment: Text.AlignHCenter
                 text :"Humidité"
             fontSizeMode: Text.Fit;
        //     minimumPointSize: 5;
-            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
+            font.pointSize: Math.max(Math.min(parent.height/21, parent.width/21),5)
                 }
                 
                       
            Text{
                 id :humidite
-                x : parent.width*0.4
-                y: parent.height*0.8
-                
+                x : parent.width*0.57
+                y: parent.height*0.83
+            font.family : "Linux Biolinum";                
                 horizontalAlignment: Text.AlignHCenter
                 text :"35 %"
              fontSizeMode: Text.Fit;
-            font.pointSize: Math.max(Math.min(parent.height/7, parent.width/14),5)
+            font.pointSize: Math.max(Math.min(parent.height/21, parent.width/21),5)
                 }
                 
 
@@ -191,11 +182,12 @@ Window
         var p= "%1 hPa"
         var i= "%1"
         var tend="%1"
-        D_Meteo.refresh()
-          D_Meteo.maj_temp()
-          D_Meteo.maj_hum()
-          D_Meteo.maj_press()
-        //meteo.source=i.arg(D_Meteo.getImage)
+         D_Meteo.refresh()
+           D_Meteo.maj_temp()
+           D_Meteo.maj_hum()
+           D_Meteo.maj_press()
+       //    D_Meteo.calc_tendance()
+      //  meteo.source=i.arg(D_Meteo.getImage)
           temperature.text = t.arg(D_Meteo.getTemp.toFixed(2))
           humidite.text = h.arg(Math.round(D_Meteo.getHum))
           pression.text = p.arg(Math.round(D_Meteo.getPress))
