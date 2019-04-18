@@ -3,10 +3,11 @@
 #include "capteur.h"
 #include <math.h>
 #include <deque>
+#include<iostream>
 
 //Constructeur
 Data_Meteo::Data_Meteo() {
-    // Data_Meteo::capt_init();
+     Data_Meteo::capt_init();
 }
 
 //Get
@@ -91,15 +92,15 @@ qreal Data_Meteo::getZambretti() const
 }
     
     
-qreal Data_Meteo::moyenne (std::deque <int> &nbre){
+qreal Data_Meteo::moyenne (std::deque <qreal> &nbre){
     
-    double moy=0;
+    qreal moy=0;
      for(int i=0; i<nbre.size(); i++)
    {
-      moy += nbre[i];   
+      moy += nbre[i];   }
       moy=moy/nbre.size();
       return moy;
-   }
+   
  
 }
 
@@ -107,12 +108,47 @@ qreal Data_Meteo::moyenne (std::deque <int> &nbre){
 
 void Data_Meteo::calc_tendance()
 {
-    //Pour les secondes : 
+
+    
+    
+    Data_Meteo::calc_press_sea();
+    
+     //Pour les secondes :    
     while (val_seconde.size() < 60){
+      
         val_seconde.push_front(m_press_sea);
-        
     }
         
         val_seconde.pop_back();
         val_seconde.push_front(m_press_sea);
+        std::cout<<"Val seconde="<<val_seconde.front()<<std::endl;
+        
+if (val_seconde.size() ==60){ 
+    while (val_minutes.size() < 60){
+      
+        val_minutes.push_front(Data_Meteo::moyenne(val_seconde));
+    }
+        
+        val_minutes.pop_back();
+        val_minutes.push_front(Data_Meteo::moyenne(val_seconde));
+        std::cout<<m_press_sea<<std::endl;
+        std::cout<<"val minutes="<<val_minutes.front()<<std::endl;
+    
+}
+        
+        
+if (val_minutes.size()==5){        
+                //Pour les heures :    
+    while (val_heure.size() < 4){
+      
+        val_heure.push_front(Data_Meteo::moyenne(val_minutes));
+    }
+        
+        val_heure.pop_back();
+        val_heure.push_front(Data_Meteo::moyenne(val_minutes));
+        std::cout<<m_press_sea<<std::endl;
+        std::cout<<"val heure"<<val_heure.front()<<std::endl;
+    
+}
+        
 }

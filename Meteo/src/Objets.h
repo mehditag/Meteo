@@ -26,7 +26,7 @@ private:
     qreal m_zambretti=2;
     
     std::deque<qreal> val_seconde;
-    std::deque<qreal> val_minute;
+    std::deque<qreal> val_minutes;
     std::deque<qreal> val_heure;
     
     struct bme280_dev m_dev;
@@ -47,7 +47,7 @@ public slots:
         void capt_init();
         void calc_press_sea();
         void calc_zambretti(qreal p_sea);
-        qreal moyenne (std::deque <int> &nbre);
+        qreal moyenne (std::deque <qreal> &nbre);
         void calc_tendance();
 
 public:
