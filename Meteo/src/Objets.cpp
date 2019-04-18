@@ -2,11 +2,11 @@
 #include <QDebug>
 #include "capteur.h"
 #include <math.h>
-
+#include <deque>
 
 //Constructeur
 Data_Meteo::Data_Meteo() {
-     Data_Meteo::capt_init();
+    // Data_Meteo::capt_init();
 }
 
 //Get
@@ -91,4 +91,28 @@ qreal Data_Meteo::getZambretti() const
 }
     
     
+qreal Data_Meteo::moyenne (std::deque <int> &nbre){
     
+    double moy=0;
+     for(int i=0; i<nbre.size(); i++)
+   {
+      moy += nbre[i];   
+      moy=moy/nbre.size();
+      return moy;
+   }
+ 
+}
+
+
+
+void Data_Meteo::calc_tendance()
+{
+    //Pour les secondes : 
+    while (val_seconde.size() < 60){
+        val_seconde.push_front(m_press_sea);
+        
+    }
+        
+        val_seconde.pop_back();
+        val_seconde.push_front(m_press_sea);
+}

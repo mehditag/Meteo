@@ -3,6 +3,7 @@
 #include "bme280.h"
 #include "bme280_defs.h"
 #include "capteur.h"
+#include <deque>
 
 
 class Data_Meteo : public QObject
@@ -12,7 +13,7 @@ class Data_Meteo : public QObject
     Q_PROPERTY(qreal getHum READ getHum WRITE setHum 		NOTIFY humChanged)
     Q_PROPERTY(qreal getPress READ getPress WRITE setPress 		NOTIFY pressChanged)
     Q_PROPERTY(QString getImage READ getImage       NOTIFY imageChanged)
-     Q_PROPERTY(qreal getZambretti READ getZambretti 		NOTIFY zambChanged)
+    Q_PROPERTY(qreal getZambretti READ getZambretti 		NOTIFY zambChanged)
     
     
 private:
@@ -23,6 +24,10 @@ private:
     qreal m_altitude=151.5; 
     QString m_image="Icones/Orageux.svg";
     qreal m_zambretti=2;
+    
+    std::deque<qreal> val_seconde;
+    std::deque<qreal> val_minute;
+    std::deque<qreal> val_heure;
     
     struct bme280_dev m_dev;
     struct bme280_data m_data;
@@ -42,6 +47,8 @@ public slots:
         void capt_init();
         void calc_press_sea();
         void calc_zambretti(qreal p_sea);
+        qreal moyenne (std::deque <int> &nbre);
+        void calc_tendance();
 
 public:
 	Data_Meteo();
