@@ -1,5 +1,4 @@
 #include "Objets.h"
-#include <QDebug>
 #include "capteur.h"
 #include <math.h>
 #include <deque>
@@ -82,14 +81,14 @@ void  Data_Meteo::calc_press_sea(){
 
 void Data_Meteo::calc_zambretti(qreal pression){
     
-    if (m_tendance<-0.001){
+    if (m_tendance<-2){
         
         m_zambretti=ceil(130-(10*pression/81));
         m_tendance_im="Icones/fleche_falling.svg";
         
     }
         
-        else if ( m_tendance>0.001){
+        else if ( m_tendance>2){
         
             m_zambretti=ceil(179-(20*pression/129));
             m_tendance_im="Icones/fleche_rising.svg";
@@ -101,7 +100,7 @@ void Data_Meteo::calc_zambretti(qreal pression){
         }
     
     switch (m_zambretti){
-         case 1: m_description="Il fait beau"; m_image="Icones/Soleil.svg";break;
+                  case 1: m_description="Il fait beau"; m_image="Icones/Soleil.svg";break;
                   case 2: m_description="Il fait beau 2";m_image="Icones/Soleil.svg"; break;
                   case 3: m_description="Il fait beau 3"; m_image="Icones/Soleil_nuageux.svg";break;
                   case 4: m_description="pluie fine" ; m_image="Icones/Soleil_nuageux.svg";break;
@@ -134,7 +133,7 @@ void Data_Meteo::calc_zambretti(qreal pression){
                   case 31:m_description="tempête" ; m_image="Icones/Orageux.svg";break;
                   case 32:m_description="tempete" ; m_image="Icones/Orageux.svg";break;
                   
-                default: m_description="are you serious"; break;}
+                  default: m_description="Chargement en cours"; break;}
  
 }
     
@@ -158,24 +157,19 @@ qreal Data_Meteo::moyenne (std::deque <qreal> &nbre){
       moy += nbre[i];   }
       moy=moy/nbre.size();
       return moy;
-   
- 
 }
 
 
 
 void Data_Meteo::calc_tendance()
-{
-
-    
-    
+{    
     Data_Meteo::calc_press_sea();
     
      //Pour les secondes :    
     if (val_seconde.size() < 60){
       
         val_seconde.push_front(m_press_sea);
-         std::cout<<"taille seconde="<<val_seconde.size()<<std::endl;
+//          std::cout<<"taille seconde="<<val_seconde.size()<<std::endl;
     }
 
     else 
@@ -183,25 +177,25 @@ void Data_Meteo::calc_tendance()
         val_seconde.pop_back();
         val_seconde.push_front(m_press_sea);*/
         val_seconde.clear();
-        std::cout<<"Val seconde="<<val_seconde.front()<<std::endl;}
+        /*std::cout<<"Val seconde="<<val_seconde.front()<<std::endl;*/}
    
    
    
 if (val_seconde.size() ==60){ 
    if (val_minutes.size() < 60){
-       std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
+//        std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
         val_minutes.push_front(Data_Meteo::moyenne(val_seconde));
     }
         
        else{ 
         val_minutes.pop_back();
         val_minutes.push_front(Data_Meteo::moyenne(val_seconde));
-        std::cout<<m_press_sea<<std::endl;
-        std::cout<<"val minutes="<<val_minutes.front()<<std::endl;
+//         std::cout<<m_press_sea<<std::endl;
+//         std::cout<<"val minutes="<<val_minutes.front()<<std::endl;
        }
     
 }
-        std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
+//         std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
   m_tendance=0;    
   
 if (val_minutes.size()==1){        
@@ -216,14 +210,85 @@ if (val_minutes.size()==1){
     {
         val_heure.pop_back();
         val_heure.push_front(Data_Meteo::moyenne(val_minutes));
-        std::cout<<m_press_sea<<std::endl;
-        std::cout<<"val heure"<<val_heure.front()<<std::endl;
+//         std::cout<<m_press_sea<<std::endl;
+//         std::cout<<"val heure"<<val_heure.front()<<std::endl;
     m_tendance=m_press_sea-val_heure.front();
     }
 }
 
 
-std::cout<<"tendance="<<m_tendance<<std::endl;
+// std::cout<<"tendance="<<m_tendance<<std::endl;
 Data_Meteo::calc_zambretti(m_press_sea);
-std::cout<<"zambretti="<<m_zambretti<<std::endl;
+// std::cout<<"zambretti="<<m_zambretti<<std::endl;
+
+Data_Meteo::calc_history(stock_temp_sec, stock_temp_min, stock_temp_heure, 1);
+Data_Meteo::calc_history(stock_press_sec, stock_press_min, stock_press_heure, 2);
+Data_Meteo::calc_history(stock_hum_sec, stock_hum_min, stock_hum_heure, 3);
+
+std::cout<<"Température="<<stock_temp_sec.front()<<std::endl;
+std::cout<<"Pression="<<stock_press_sec.front()<<std::endl;
+std::cout<<"Humidite="<<stock_hum_sec.front()<<std::endl;
 }
+
+
+
+
+void Data_Meteo::calc_history(std::deque<qreal> &stock_data_sec,std::deque<qreal> &stock_data_min,std::deque<qreal> &stock_data_heure, int type)
+{
+    qreal data;
+    switch (type){
+        case 1:data=m_temp;break;
+        case 2:data=m_pressure;break;
+        case 3:data=m_humidity;break;
+    }
+    
+     //Pour les secondes :    
+    if (stock_data_sec.size() < 60){
+      
+        stock_data_sec.push_front(data);
+        // std::cout<<"taille seconde="<<val_seconde.size()<<std::endl;
+    }
+
+    else 
+    {/*
+        val_seconde.pop_back();
+        val_seconde.push_front(m_press_sea);*/
+        stock_data_sec.clear();
+        //std::cout<<"Val seconde="<<val_seconde.front()<<std::endl;
+        
+    }
+   
+   
+   
+if (stock_data_sec.size() ==60){ 
+   if (stock_data_min.size() < 60){
+      // std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
+        stock_data_min.push_front(Data_Meteo::moyenne(stock_data_sec));
+    }
+        
+       else{ 
+        stock_data_min.pop_back();
+        stock_data_min.push_front(Data_Meteo::moyenne(stock_data_sec));
+//         std::cout<<m_press_sea<<std::endl;
+//         std::cout<<"val minutes="<<val_minutes.front()<<std::endl;
+       }
+    
+}
+//         std::cout<<"taille minute="<<val_minutes.size()<<std::endl;
+  
+if (stock_data_min.size()==1){        
+                //Pour les heures :    
+    if (stock_data_heure.size() < 4){
+      
+        stock_data_heure.push_front(Data_Meteo::moyenne(stock_data_min));
+    }
+        
+    else
+    {
+        stock_data_heure.pop_back();
+        stock_data_heure.push_front(Data_Meteo::moyenne(stock_data_min));
+    }
+}
+
+}
+

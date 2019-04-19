@@ -33,6 +33,19 @@ private:
     std::deque<qreal> val_minutes;
     std::deque<qreal> val_heure;
     
+    std::deque<qreal> stock_temp_sec;
+    std::deque<qreal> stock_temp_min;
+    std::deque<qreal> stock_temp_heure;
+    
+     std::deque<qreal> stock_press_sec;
+    std::deque<qreal> stock_press_min;
+    std::deque<qreal> stock_press_heure;
+    
+     std::deque<qreal> stock_hum_sec;
+    std::deque<qreal> stock_hum_min;
+    std::deque<qreal> stock_hum_heure;
+    
+    
     struct bme280_dev m_dev;
     struct bme280_data m_data;
 
@@ -54,6 +67,7 @@ public slots:
         void calc_zambretti(qreal p_sea);
         qreal moyenne (std::deque <qreal> &nbre);
         void calc_tendance();
+        void calc_history(std::deque<qreal> &stock_data_sec,std::deque<qreal> &stock_data_min,std::deque<qreal> &stock_data_heure, int type);
 
 public:
 	Data_Meteo();
