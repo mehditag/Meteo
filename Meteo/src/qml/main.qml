@@ -39,6 +39,7 @@ Window
             source : ""
             sourceSize.width : Math.min(parent.width/3, parent.height/6)
             sourceSize.height : Math.min(parent.width/3, parent.height/6)
+            
         }
         
         
@@ -46,7 +47,7 @@ Window
         Text{
                 id :indication
                 x : parent.width*0.25
-                y : parent.height*3/4
+                y : parent.height*0.78
                 horizontalAlignment: Text.AlignHCenter
             font.family : "Linux Biolinum";                
                 text: "Ensoleillé"
@@ -69,7 +70,7 @@ Window
                     
              Text {
              id :date
-            x : parent.width * 0.20
+            x : parent.width * 0.18
             y : parent.height * 0.01
             
            horizontalAlignment: Text.AlignHCenter
@@ -98,7 +99,7 @@ Window
 
         Text {
            id :text_temp
-           x : parent.width*0.30
+           x : parent.width*0.33
            y : parent.height*0.30
            horizontalAlignment : Text.AlignHCenter
             text : "Il fait actuellement "
@@ -196,6 +197,32 @@ Window
 		date.text=new Date().toLocaleDateString(Qt.locale("fr_FR"),'dddd dd MMMM yyyy')
         tendance.source=tend.arg(D_Meteo.getTendance)
         indication.text = msg.arg(D_Meteo.getDescr)
+	}
+	
+	function animation(){
+      var z=D_Meteo.getZ
+      var t=tendance.source
+    
+      if (t < -0.01){
+         tendance.x =(tendance.parent.width*0.05+z)
+            tendance.y =(tendance.parent.height*3/4+z)
+     }
+            
+      else if (t>0.01){      
+     tendance.x =(tendance.parent.width*0.05+z)
+            tendance.y =(tendance.parent.height*3/4-z)}
+        else 
+        {tendance.x =(tendance.parent.width*0.05+z)
+            tendance.y =(tendance.parent.height*3/4)}
+    }
+	
+	Timer {
+		id: globalTimer2
+		interval: 100
+		repeat: true
+		running: true
+		triggeredOnStart: true
+		onTriggered:animation()
 	}
 	
 	Timer {
