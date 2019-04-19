@@ -14,6 +14,20 @@ qreal  Data_Meteo::getTemp() const {
 	return m_temp;
     
 }
+
+qreal  Data_Meteo::getZ()  {		
+    
+    //if rising
+         if (m_z>40){m_z=0;}
+     m_z=m_z+5;
+// 	return m_z;
+    
+    //If steady
+//     if (m_z>40){m_z=0;}
+//     m_z=m_z+5;
+// 	return m_z;
+    
+}
    
 //Set      
 void Data_Meteo::setTemp(qreal temperature) {
@@ -51,6 +65,10 @@ QString Data_Meteo::getImage() const {
 	return m_image;
 }
 
+qreal Data_Meteo::gettend() const {		
+	return m_tendance;
+}
+
 void Data_Meteo::maj_temp(){
     m_temp=m_data.temperature;
 }
@@ -81,14 +99,14 @@ void  Data_Meteo::calc_press_sea(){
 
 void Data_Meteo::calc_zambretti(qreal pression){
     
-    if (m_tendance<-2){
+    if (m_tendance<-0.01){
         
         m_zambretti=ceil(130-(10*pression/81));
         m_tendance_im="Icones/fleche_falling.svg";
         
     }
         
-        else if ( m_tendance>2){
+        else if ( m_tendance>0.01){
         
             m_zambretti=ceil(179-(20*pression/129));
             m_tendance_im="Icones/fleche_rising.svg";
@@ -100,38 +118,38 @@ void Data_Meteo::calc_zambretti(qreal pression){
         }
     
     switch (m_zambretti){
-                  case 1: m_description="Il fait beau"; m_image="Icones/Soleil.svg";break;
-                  case 2: m_description="Il fait beau 2";m_image="Icones/Soleil.svg"; break;
-                  case 3: m_description="Il fait beau 3"; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 4: m_description="pluie fine" ; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 5: m_description="incertain"; m_image="Icones/Averses.svg";break;
-                  case 6: m_description="incertain"; m_image="Icones/Pluvieux.svg";break;
-                  case 7:m_description="pluie" ; m_image="Icones/Pluvieux.svg";break;
-                  case 8: m_description="averses" ;m_image="Icones/Pluvieux.svg"; break;
-                  case 9: m_description="averses" ; m_image="Icones/Pluvieux.svg";break;                            
-                  case 10:m_description="Il fait beau"; m_image="Icones/Soleil.svg";break;
-                  case 11:m_description="Il fait beau 2"; m_image="Icones/Soleil.svg";break;
-                  case 12:m_description="Il fait beau 3"; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 13:m_description="soleil + nuages" ; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 14:m_description="pluie fine" ;m_image="Icones/Averses.svg"; break;
-                  case 15:m_description="incertain"; m_image="Icones/Averses.svg";break;
-                  case 16:m_description="incertain"; m_image="Icones/Pluvieux.svg";break;
-                  case 17:m_description="pluie" ; m_image="Icones/Pluvieux.svg";break;
-                  case 18:m_description="averses" ; m_image="Icones/Pluvieux.svg";break;
-                  case 19:m_description="averses" ; m_image="Icones/Orageux.svg";break;
-                  case 20:m_description="Il fait beau"; m_image="Icones/Soleil.svg";break;
-                  case 21:m_description="Il fait beau 2"; m_image="Icones/Soleil.svg";break;
-                  case 22:m_description="Il fait beau 3"; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 23:m_description="soleil + nuages" ;m_image="Icones/Soleil_nuageux.svg"; break;
-                  case 24:m_description="pluie fine" ; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 25:m_description="incertain"; m_image="Icones/Pluvieux.svg";break;
-                  case 26:m_description="incertain"; m_image="Icones/Nuageux.svg";break;
-                  case 27:m_description="pluie" ; m_image="Icones/Soleil_nuageux.svg";break;
-                  case 28:m_description="averses" ; m_image="Icones/Nuageux.svg";break;
-                  case 29:m_description="averses" ; m_image="Icones/Averses.svg";break;
-                  case 30:m_description="incertain";m_image="Icones/Averses.svg"; break;
-                  case 31:m_description="tempête" ; m_image="Icones/Orageux.svg";break;
-                  case 32:m_description="tempete" ; m_image="Icones/Orageux.svg";break;
+                  case 1: m_description="Ensoleillé"; m_image="Icones/Soleil.svg";break;
+                  case 2: m_description="Ensoleillé";m_image="Icones/Soleil.svg"; break;
+                  case 3: m_description="Ensoleillé"; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 4: m_description="Eclaircies" ; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 5: m_description="Averses"; m_image="Icones/Averses.svg";break;
+                  case 6: m_description="Instable"; m_image="Icones/Pluvieux.svg";break;
+                  case 7:m_description="Pluvieux" ; m_image="Icones/Pluvieux.svg";break;
+                  case 8: m_description="Pluvieux" ;m_image="Icones/Pluvieux.svg"; break;
+                  case 9: m_description="Pluvieux" ; m_image="Icones/Pluvieux.svg";break;                            
+                  case 10:m_description="Ensoleillé"; m_image="Icones/Soleil.svg";break;
+                  case 11:m_description="Ensoleillé"; m_image="Icones/Soleil.svg";break;
+                  case 12:m_description="Eclaircies"; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 13:m_description="Eclaircies" ; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 14:m_description="Averses" ;m_image="Icones/Averses.svg"; break;
+                  case 15:m_description="Variable"; m_image="Icones/Averses.svg";break;
+                  case 16:m_description="Variable"; m_image="Icones/Pluvieux.svg";break;
+                  case 17:m_description="Pluvieux" ; m_image="Icones/Pluvieux.svg";break;
+                  case 18:m_description="Pluvieux" ; m_image="Icones/Pluvieux.svg";break;
+                  case 19:m_description="Orageux" ; m_image="Icones/Orageux.svg";break;
+                  case 20:m_description="Ensoleillé"; m_image="Icones/Soleil.svg";break;
+                  case 21:m_description="Ensoleillé"; m_image="Icones/Soleil.svg";break;
+                  case 22:m_description="Eclaircies"; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 23:m_description="Eclaircies" ;m_image="Icones/Soleil_nuageux.svg"; break;
+                  case 24:m_description="Eclaircies" ; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 25:m_description="Pluvieux"; m_image="Icones/Pluvieux.svg";break;
+                  case 26:m_description="Instable"; m_image="Icones/Nuageux.svg";break;
+                  case 27:m_description="Eclaircies" ; m_image="Icones/Soleil_nuageux.svg";break;
+                  case 28:m_description="Instable" ; m_image="Icones/Nuageux.svg";break;
+                  case 29:m_description="Averses" ; m_image="Icones/Averses.svg";break;
+                  case 30:m_description="Averses";m_image="Icones/Averses.svg"; break;
+                  case 31:m_description="Orageux" ; m_image="Icones/Orageux.svg";break;
+                  case 32:m_description="Orageux" ; m_image="Icones/Orageux.svg";break;
                   
                   default: m_description="Chargement en cours"; break;}
  
@@ -214,10 +232,11 @@ if (val_minutes.size()==1){
 //         std::cout<<"val heure"<<val_heure.front()<<std::endl;
     m_tendance=m_press_sea-val_heure.front();
     }
+//     std::cout<<"tendance="<<m_tendance<<std::endl; 
 }
 
 
-// std::cout<<"tendance="<<m_tendance<<std::endl;
+ //std::cout<<"tendance="<<m_tendance<<std::endl;
 Data_Meteo::calc_zambretti(m_press_sea);
 // std::cout<<"zambretti="<<m_zambretti<<std::endl;
 
@@ -225,9 +244,9 @@ Data_Meteo::calc_history(stock_temp_sec, stock_temp_min, stock_temp_heure, 1);
 Data_Meteo::calc_history(stock_press_sec, stock_press_min, stock_press_heure, 2);
 Data_Meteo::calc_history(stock_hum_sec, stock_hum_min, stock_hum_heure, 3);
 
-std::cout<<"Température="<<stock_temp_sec.front()<<std::endl;
-std::cout<<"Pression="<<stock_press_sec.front()<<std::endl;
-std::cout<<"Humidite="<<stock_hum_sec.front()<<std::endl;
+// std::cout<<"Température="<<stock_temp_sec.front()<<std::endl;
+// std::cout<<"Pression="<<stock_press_sec.front()<<std::endl;
+// std::cout<<"Humidite="<<stock_hum_sec.front()<<std::endl;
 }
 
 

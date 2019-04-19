@@ -15,6 +15,8 @@ class Data_Meteo : public QObject
     Q_PROPERTY(QString getImage READ getImage       NOTIFY imageChanged)
     Q_PROPERTY(QString getTendance READ getTendance		NOTIFY tendChanged)
         Q_PROPERTY(QString getDescr READ getDescr       	NOTIFY descrChanged)
+          Q_PROPERTY(qreal getZ READ getZ       	NOTIFY ZChanged)
+          Q_PROPERTY(qreal gettend READ gettend      	NOTIFY tendanceChanged)
     
     
 private:
@@ -28,6 +30,7 @@ private:
     qreal m_tendance;
     QString m_tendance_im;
     QString m_description;
+    qreal m_z=0;
     
     std::deque<qreal> val_seconde;
     std::deque<qreal> val_minutes;
@@ -56,6 +59,8 @@ void pressChanged();
 void imageChanged();
 void tendChanged();
 void descrChanged();
+void ZChanged();
+void tendanceChanged();
 
 public slots:
 	    void maj_temp();
@@ -80,4 +85,6 @@ public:
     QString getImage() const;
     QString getTendance() const;
       QString getDescr() const;
+      qreal getZ() ;
+      qreal gettend() const;
 };
