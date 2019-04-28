@@ -20,7 +20,7 @@
 Cette application nécessite une Raspberry Pi et un sensor BME280 
 - Branchement du capteur à la Raspberry Pi : 
 	Le capteur doit être branché en I2C. Voici une photo de la Pi, et de la cartographie des broches de branchement : 
-<img src = "https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:](https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:" title = "Raspberry Pi 3b+ Cartographie" alt = "Raspberry Pi 3b+ Cartographie" >
+<img src = "https://projetsdiy.fr/wp-content/uploads/2017/06/Raspberry-pi-reperage-broches-Pinout.jpg" title = "Raspberry Pi 3b+ Cartographie" alt = "Raspberry Pi 3b+ Cartographie" >
 
 Reliez le capteur à la Raspberry Pi selon le tableau suivant : 
 
@@ -84,4 +84,4 @@ Toujours dans le répertoire build du projet Meteo, il suffit de taper la comman
 
 L'application s'ouvre alors :
 
-![Capture d'écran application](C:\Users\Mehdi\Documents\Travail\Formation AJC)
+<img src = "C:\Users\Mehdi\Documents\Travail\Formation AJC/meteo.png" title = "Capture d'écran Application Météo" alt = "Capture d'écran Application Météo" >
