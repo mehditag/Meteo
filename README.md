@@ -17,7 +17,9 @@
 ## Pour utiliser cette application :
 
 1. Matériel nécessaire :
+
 Cette application nécessite une Raspberry Pi et un sensor BME280 
+
 - Branchement du capteur à la Raspberry Pi : 
 	Le capteur doit être branché en I2C. Voici une photo de la Pi, et de la cartographie des broches de branchement : 
 <img src = "https://projetsdiy.fr/wp-content/uploads/2017/06/Raspberry-pi-reperage-broches-Pinout.jpg" title = "Raspberry Pi 3b+ Cartographie" alt = "Raspberry Pi 3b+ Cartographie" >
@@ -59,8 +61,11 @@ Reliez le capteur à la Raspberry Pi selon le tableau suivant :
    
    
 - Vérification du branchement:
+
 Afin de vérifier le bon branchement, veuillez taper la commandes suivantes :
+
 Installation des outils i2c : `sudo apt-get install i2c-tools`
+
 Vérification du branchement i2c : `sudo i2cdetect -y 1`
 
 Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat : 
@@ -68,7 +73,8 @@ Si le branchement est bien réalisé, la dernière commande doit avoir comme ré
 
 2. Téléchargement des fichiers nécessaire :
 
-Dans le répertoire de votre choix, télécharger les fichiers du projet via la commande suivant : `git clone https://github.com/mehditag/Meteo.git `
+Dans le répertoire de votre choix, télécharger les fichiers du projet via la commande suivante : 
+`git clone https://github.com/mehditag/Meteo.git `
 
 L'application utilisant plusieurs librairies, il est nécessaire de les installer :
 `sudo apt-get install ...`
@@ -76,6 +82,7 @@ L'application utilisant plusieurs librairies, il est nécessaire de les installe
 3. Création de l’exécutable:
 
 Placez-vous dans le répertoire build du projet Meteo : `cd Meteo/build`
+
 Créons maintenant l’exécutable de l'application : `cmake && make`
 
 4. Ouverture de l’exécutable : 
@@ -84,4 +91,4 @@ Toujours dans le répertoire build du projet Meteo, il suffit de taper la comman
 
 L'application s'ouvre alors :
 
-<img src = "C:\Users\Mehdi\Documents\Travail\Formation AJC/meteo.png" title = "Capture d'écran Application Météo" alt = "Capture d'écran Application Météo" >
+<img src = "https://drive.google.com/file/d/11UPyrnMteoHo-5ndGW0SBhQ6i_8G8ESu/view" title = "Capture d'écran Application Météo" alt = "Capture d'écran Application Météo" >
