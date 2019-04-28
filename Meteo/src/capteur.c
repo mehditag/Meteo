@@ -1,3 +1,12 @@
+//#############################################################################################
+// Auteur : Mehdi Taguema & Alix DUMAY
+// Version : 1.0
+// Source : Basé sur le fichier Demo_Code (librairies) fourni avec le capteur
+// Description : Le but de ce programme est de permettre d'initialiser et parametrer le capteur
+//               Il permet aussi de lire les métrique
+//##############################################################################################
+
+
 #include "bme280.h"
 #include <stdio.h>
 #include <unistd.h>
@@ -22,7 +31,12 @@
 #include <fcntl.h>
 //Raspberry 3B+ platform's default I2C device file
 #define IIC_Dev  "/dev/i2c-1"
-	
+
+
+//##############################################################
+// Fonctions propre aux drivers du capteur
+//##############################################################
+
 int fd;
 
 void user_delay_ms(uint32_t period)
@@ -49,32 +63,48 @@ int8_t user_i2c_write(uint8_t id, uint8_t reg_addr, uint8_t *data, uint16_t len)
 }
 
 
+//############################################################################
+// Fonctions créées pour l'application
+//###########################################################################
 
 
+//Fonction d'initialisation & parametrage du capteur
 struct bme280_dev init_capt()
 {
-  struct bme280_dev dev; 
-  int8_t rslt = BME280_OK;
+  
+    struct bme280_dev dev; 
+    int8_t rslt = BME280_OK;
+    
+    
+    //Test d'ouverture du bus I2C
+    if ((fd = open(IIC_Dev, O_RDWR)) < 0) {
+        printf("Failed to open the i2c bus");
+        exit(1);
+    }
+  
+    //Test d'acquisition de l'accès au bus I2C et de communication avec l'esclave
+    if (ioctl(fd, I2C_SLAVE, 0x77) < 0) {
+        printf("Failed to acquire bus access and/or talk to slave.\n");
+        exit(1);
+    }
 
-  if ((fd = open(IIC_Dev, O_RDWR)) < 0) {
-    printf("Failed to open the i2c bus");
-    exit(1);
-  }
-  if (ioctl(fd, I2C_SLAVE, 0x77) < 0) {
-    printf("Failed to acquire bus access and/or talk to slave.\n");
-    exit(1);
-  }
+    
+    //Initialisation du capteur
+    dev.dev_id = BME280_I2C_ADDR_SEC; //0x77
+    dev.intf = BME280_I2C_INTF;
+    dev.read = user_i2c_read;
+    dev.write = user_i2c_write;
+    dev.delay_ms = user_delay_ms;
+    
+    //Affichage du résultat d'initialisation du capteur
+    printf("\r\n BME280 Init Result is:%d \r\n",rslt);
 
-  dev.dev_id = BME280_I2C_ADDR_SEC; //0x77
-  dev.intf = BME280_I2C_INTF;
-  dev.read = user_i2c_read;
-  dev.write = user_i2c_write;
-  dev.delay_ms = user_delay_ms;
-printf("\r\n BME280 Init Result is:%d \r\n",rslt);
-
-rslt = bme280_init(&dev);
-int8_t rslt2;
-uint8_t settings_sel;
+    rslt = bme280_init(&dev);
+    int8_t rslt2;
+    uint8_t settings_sel;
+  
+    
+    //Paramétrage du capter
 	/* Recommended mode of operation: Indoor navigation */
 	dev.settings.osr_h = BME280_OVERSAMPLING_1X;
 	dev.settings.osr_p = BME280_OVERSAMPLING_16X;
@@ -92,23 +122,27 @@ uint8_t settings_sel;
 
 	
 
-
-return dev;
-
+    //Renvoi des paramètre du capteur dans une structure
+    return dev;
 
 }
 
+
+//Fonction d'acquisition de métrique
 struct bme280_data sensor_data (struct bme280_dev *dev){
     
    
     int8_t rslt;
     
-    //Création structure résultats
+    //Création d'une structure résultats
    
     struct bme280_data comp_data;
     
-        
-		rslt = bme280_get_sensor_data(BME280_ALL, &comp_data, dev);        
-        return comp_data;
-	}
+    //Appel de la fonction bme280_get_sensor_data (propre au capteur)
+    rslt = bme280_get_sensor_data(BME280_ALL, &comp_data, dev);  
+    
+    //Renvoi des métriques lues stockés dans la structure comp_data
+    return comp_data;
+    
+}
     
