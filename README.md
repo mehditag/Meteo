@@ -20,21 +20,50 @@
 Cette application nécessite une Raspberry Pi et un sensor BME280 
 - Branchement du capteur à la Raspberry Pi : 
 	Le capteur doit être branché en I2C. Voici une photo de la Pi, et de la cartographie des broches de branchement : 
-	![Raspberry Pi 3b+ Cartographie]([https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:](https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:))
-	Reliez le capteur à la Raspberry Pi selon le tableau suivant : 
-|Pins (Capteur)|Broches (Rasbperry Pi)| Fonction :       |
-|:---------------:|:-------------------------:|:-----------------:
-| VCC               | Broche 5V (2 ou4)    | Alimentation
-| GND              | Broche GND (6)        | Masse 
-| SDI                 | Broche I2CI_SDA (3)| Communication Données
-| SCK               | Broche I2C_SCL (5)   | Clock du capteur
+<img src = "https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:](https://www.google.com/search?biw=1600&bih=757&tbm=isch&sa=1&ei=q4bFXKr5A4m0UIyFuUg&q=i2c+raspberry&oq=i2c+raspberry&gs_l=img.3..0l2j0i7i30j0i8i30l7.214504.215177..215712...0.0..1.114.575.5j2......0....1..gws-wiz-img.O33EYEqgHHs#imgrc=MeZYY6T4V0-bMM:" title = "Raspberry Pi 3b+ Cartographie" alt = "Raspberry Pi 3b+ Cartographie" >
 
+Reliez le capteur à la Raspberry Pi selon le tableau suivant : 
+
+
+  
+<table>
+	<thead>
+		<tr>
+			<th> Pins (Capteur)</th>  
+			<th align="center">Broches (Rasbperry Pi)</th>  
+			<th align="right">Fonction</th>  
+		</tr>  
+	</thead>  
+	<tbody>  
+		<tr>  
+			<td>VCC</td>  
+			<td align="center">Broche 5V (2 ou 4)</td>  
+			<td align="left">Alimentation</td>  
+		</tr>
+		<tr>  
+			<td>GND</td>  
+			<td align="center">Broche GND (6)</td>  
+			<td align="left">Masse</td>  
+		</tr>  
+		<tr>  
+			<td>SDI</td>  
+			<td align="center">Broche I2CI_SDA (3)</td>  
+			<td align="left">Alimentation</td>  </tr>  
+		<tr>  
+			<td>SCK</td>  
+			<td align="center">Broche I2CI_SCL (5)</td>  
+			<td align="left">Clock du capteur</td>  
+		</tr>  
+	</tbody>  
+</table>
+   
+   
 - Vérification du branchement:
 Afin de vérifier le bon branchement, veuillez taper la commandes suivantes :
 Installation des outils i2c : `sudo apt-get install i2c-tools`
 Vérification du branchement i2c : `sudo i2cdetect -y 1`
 
-	Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat : 
+Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat : 
 	<pre><code>code</code></pre>
 
 2. Téléchargement des fichiers nécessaire :
