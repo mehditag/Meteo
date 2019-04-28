@@ -1,4 +1,16 @@
-# Weather Pi
+# Sommaire
+
+## Capteur/
+Répertoire contenant les librairies du sensor BME280
+
+## Zambretti/
+Repertoire contenant les fichiers de test pour l'algorithme de Zambretti
+
+## Meteo/
+Repertoire principal, contenant les fichiers nécessaires pour l'application Meteo
+
+## Organisation/
+Repertoire contenant des fichiers de Gestion de Projet (Gantt)
 
 ## Bienvenue sur l'application Weather Pi
 
