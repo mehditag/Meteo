@@ -76,12 +76,12 @@ Reliez le capteur à la Raspberry Pi selon le tableau suivant :
 
 Afin de vérifier le bon branchement, veuillez taper la commandes suivantes :
 
-Installation des outils i2c : `sudo apt-get install i2c-tools`
+Installation des outils i2c : ```sudo apt-get install i2c-tools```
 
-Vérification du branchement i2c : `sudo i2cdetect -y 1`
+Vérification du branchement i2c : ```sudo i2cdetect -y 1```
 
 Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat : 
-	<pre><code>pi@raspberrypi:~/Projet/Meteo_3/Meteo/build $ sudo i2cdetect -y 1
+	```pi@raspberrypi:~/Projet/Meteo_3/Meteo/build $ sudo i2cdetect -y 1
      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
 00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
@@ -90,7 +90,7 @@ Si le branchement est bien réalisé, la dernière commande doit avoir comme ré
 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-70: -- -- -- -- -- -- -- 77  </code></pre>
+70: -- -- -- -- -- -- -- 77  ```
 
 2. Téléchargement des fichiers nécessaire :
 
