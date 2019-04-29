@@ -76,12 +76,19 @@ Reliez le capteur à la Raspberry Pi selon le tableau suivant :
 
 Afin de vérifier le bon branchement, veuillez taper la commandes suivantes :
 
-Installation des outils i2c : 
+- activation du de l'i2c :
+``` sudo raspi-config ```
+
+<img src = "https://raw.githubusercontent.com/lesp/E14-IoT-Garden-Projects/master/Project%201%20-%20UV%20and%20Soil%20Moisture/Images/raspi-config-main.png" title = "Interface de raspi-config">
+
+   Dans le menu choisir Interfacing Options , puis I2c , puis valider.
+
+- installation des outils i2c : 
 ```
 sudo apt-get install i2c-tools
 ```
 
-Vérification du branchement i2c : ```sudo i2cdetect -y 1```
+- vérification du branchement i2c : ```sudo i2cdetect -y 1```
 
 Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat :
 ```
@@ -103,13 +110,13 @@ Dans le répertoire de votre choix, télécharger les fichiers du projet via la 
 `git clone https://github.com/mehditag/Meteo.git `
 
 L'application utilisant plusieurs librairies, il est nécessaire de les installer :
-`sudo apt-get install qt5-default qt5-qmake qtdeclarative5-dev qtdeclarative5-dev-tools qml-module-qtquick2 qml-module-qtquick-controls`
+`sudo apt-get install qt5-default qt5-qmake qtdeclarative5-dev qtdeclarative5-dev-tools qml-module-qtquick2 qml-module-qtquick-controls cmake`
 
 3. Création de l’exécutable:
 
-Placez-vous dans le répertoire build du projet Meteo : `cd Meteo/build`
+Placez-vous dans le répertoire build du projet Meteo : `cd Meteo/Meteo`
 
-Créons maintenant l’exécutable de l'application : `cmake && make`
+Créons maintenant l’exécutable de l'application : `cmake . && make`
 
 4. Ouverture de l’exécutable : 
 
