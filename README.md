@@ -81,7 +81,16 @@ Installation des outils i2c : `sudo apt-get install i2c-tools`
 Vérification du branchement i2c : `sudo i2cdetect -y 1`
 
 Si le branchement est bien réalisé, la dernière commande doit avoir comme résultat : 
-	<pre><code>code</code></pre>
+	<pre><code>pi@raspberrypi:~/Projet/Meteo_3/Meteo/build $ sudo i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- 77  </code></pre>
 
 2. Téléchargement des fichiers nécessaire :
 
