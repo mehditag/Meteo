@@ -103,7 +103,7 @@ Dans le répertoire de votre choix, télécharger les fichiers du projet via la 
 `git clone https://github.com/mehditag/Meteo.git `
 
 L'application utilisant plusieurs librairies, il est nécessaire de les installer :
-`sudo apt-get install ...`
+`sudo apt-get install qt5-default qt5-qmake qtdeclarative5-dev qtdeclarative5-dev-tools qml-module-qtquick2 qml-module-qtquick-controls`
 
 3. Création de l’exécutable:
 
