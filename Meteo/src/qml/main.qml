@@ -588,11 +588,15 @@ Window
  //Mouvement de bas en haut, de haut en bas ou horizontale suivant la tendance
 
 	function animation(){
+        
       //Variable permettant de modifier les coordonnées de l'image  
-        var z=D_Meteo.getZ
+        var z=D_Meteo.getAnimation
         var t=D_Meteo.gettend
-//         console.log(t)
-      
+        
+        //Incrément des coordonnées
+        D_Meteo.animation()
+    
+    
       //Mouvement de bas en haut, de haut en bas ou horizontale suivant la tendance
       
       //Mouvement de haut en bas pour une tendance décroissante
