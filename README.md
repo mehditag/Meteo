@@ -128,4 +128,4 @@ Toujours dans le répertoire build du projet Meteo, il suffit de taper la comman
 
 L'application s'ouvre alors :
 
-<img src = "https://github.com/mehditag/Meteo/blob/master/Organisation/Screenshot.svg" title = "Capture d'écran Application Météo" alt = "Capture d'écran Application Météo" >
+<img src = "https://github.com/mehditag/Meteo/blob/master/Organisation/Screenshot.svg"  title = "Capture d'écran Application Météo" alt = "Capture d'écran Application Météo" >
