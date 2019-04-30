@@ -600,13 +600,13 @@ Window
       //Mouvement de bas en haut, de haut en bas ou horizontale suivant la tendance
       
       //Mouvement de haut en bas pour une tendance décroissante
-        if (t <  -0.5){
+        if (t <  -2){
             tendance.x =(tendance.parent.width*0.05+z)
             tendance.y =(tendance.parent.height*3/4+z)
         }
     
      //Mouvement de bas en haut pour un tendance croissante
-        else if (t>0.5){      
+        else if (t>2){      
             tendance.x =(tendance.parent.width*0.05+z)
             tendance.y =(tendance.parent.height*3/4-z)}
         
