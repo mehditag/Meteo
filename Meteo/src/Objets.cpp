@@ -289,12 +289,12 @@ void Data_Meteo::change_background(){
     qint32 h_nuit=0;
     
     //Suivant la saison hiver ou été, modification des heures jour et nuit
-    if (datetime.tm_mon >= 4 && datetime.tm_mon <= 8) {
-        h_jour=7;
-        h_nuit=21;}
-    else {
+    if (datetime.tm_mon <= 4 && datetime.tm_mon >= 8) {
         h_jour=9;
-        h_nuit=19;
+        h_nuit=19;}
+    else {
+        h_jour=11;
+        h_nuit=21;
     }
     // Récupération heure de l'instant pour le calcul jour/nuit
     if (datetime.tm_hour <h_jour ||  datetime.tm_hour>=h_nuit){
@@ -317,13 +317,13 @@ void Data_Meteo::calc_zambretti(qreal pression){
      datetime = *localtime(&temps);
     
     //Réalisation de l'algorithme
-    if (m_tendance<-0.5){
+    if (m_tendance<-2){
         
         m_zambretti=ceil(130-(10*pression/81));
         m_tendance_im="Icones/fleche_falling.svg";
     }
         
-    else if ( m_tendance>0.5){
+    else if ( m_tendance>2){
         m_zambretti=ceil(179-(20*pression/129));
         m_tendance_im="Icones/fleche_rising.svg";
     }
