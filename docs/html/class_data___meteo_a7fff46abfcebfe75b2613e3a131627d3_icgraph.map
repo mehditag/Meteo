@@ -1,0 +1,5 @@
+<map id="Data_Meteo::moyenne" name="Data_Meteo::moyenne">
+<area shape="rect" id="node2" href="$class_data___meteo.html#a88b9f75b52b074b88b9b1e9b24197519" title="Data_Meteo::calc_tendance" alt="" coords="221,5,421,32"/>
+<area shape="rect" id="node4" href="$class_data___meteo.html#a487a455e44a91bfe036ad5c5bdeba96d" title="Data_Meteo::calc_history" alt="" coords="230,56,413,83"/>
+<area shape="rect" id="node3" href="$class_data___meteo.html#a8eae1203c2970b08603a4852706d5922" title="Data_Meteo::refresh" alt="" coords="469,31,623,57"/>
+</map>

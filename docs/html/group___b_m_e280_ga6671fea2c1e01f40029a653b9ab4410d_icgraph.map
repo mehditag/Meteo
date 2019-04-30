@@ -1,0 +1,4 @@
+<map id="bme280_get_sensor_data" name="bme280_get_sensor_data">
+<area shape="rect" id="node2" href="$capteur_8h.html#a85f2670d2d014281889fff5240d26b03" title="sensor_data" alt="" coords="243,5,344,32"/>
+<area shape="rect" id="node3" href="$class_data___meteo.html#a8eae1203c2970b08603a4852706d5922" title="Data_Meteo::refresh" alt="" coords="392,5,545,32"/>
+</map>
