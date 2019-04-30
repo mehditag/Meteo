@@ -4,23 +4,23 @@
 Répertoire contenant les librairies du sensor BME280
 
 ## Zambretti/
-Repertoire contenant les fichiers de test pour l'algorithme de Zambretti
+Répertoire contenant les fichiers de test pour l'algorithme de Zambretti
 
 ## Meteo/
-Repertoire principal, contenant les fichiers nécessaires pour l'application Meteo
+Répertoire principal, contenant les fichiers nécessaires pour l'application Meteo
 
 ## Organisation/
-Repertoire contenant des fichiers de Gestion de Projet (Gantt), le rapport et la présentation
+Répertoire contenant des fichiers de Gestion de Projet (Gantt), le rapport et la présentation
 
 ## docs/
-Repertoire contenant le dossier technique Doxygen, 
+Répertoire contenant le dossier technique Doxygen, 
 Consultable ici : <a href="https://mehditag.github.io/Meteo/index.html"> Documentation WeatherPi </a>
 
 ## Bienvenue sur l'application Weather Pi
 
  1. Description du projet :
 
-	Weather Pi est une application météo, qui utilise les données issues d’un sensor BME280 branchée en I2C pour afficher une prévision météo valable sur les 4 prochaines heures. L’application permet à l’utilisateur de connaître également la température, la pression et l’humidité mesurées par le capteur ainsi que la date et l’heure. A partir de la deuxième heure de fonctionnement, un historique commence à s’afficher : il présente les données mesurées et la météo prévue au cours des 3 dernières heures.
+	Weather Pi est une application météo, qui utilise les données issues d’un sensor BME280 branché en I2C pour afficher une prévision météo valable sur les 4 prochaines heures. L’application permet à l’utilisateur de connaître également la température, la pression et l’humidité mesurées par le capteur ainsi que la date et l’heure. A partir de la deuxième heure de fonctionnement, un historique commence à s’afficher : il présente les données mesurées et la météo prévue au cours des 3 dernières heures.
 
  2. Fonctionnement de l'application :
 
@@ -28,7 +28,7 @@ Consultable ici : <a href="https://mehditag.github.io/Meteo/index.html"> Documen
 	- L’application récupère les données de Pression, Température et humidité du capteur
 	- Elle calcule la prévision météo sur les 4 prochaines heures
 	- Elle affiche les données sur une interface graphique
-	- L’affichage de l’historique s’affiche au fur et à mesure dans les 4 heures
+	- L’affichage de l’historique s’affiche au fur et à mesure dans les 3 heures
 
 ## Pour utiliser cette application :
 
