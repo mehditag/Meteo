@@ -12,6 +12,10 @@ Repertoire principal, contenant les fichiers nécessaires pour l'application Met
 ## Organisation/
 Repertoire contenant des fichiers de Gestion de Projet (Gantt)
 
+## docs/
+Repertoire contenant le dossier technique Doxygen, 
+Consultable ici : <a href="https://mehditag.github.io/Meteo/index.html"> Documentation WeatherPi </a>
+
 ## Bienvenue sur l'application Weather Pi
 
  1. Description du projet :
