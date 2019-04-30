@@ -500,7 +500,6 @@ void Data_Meteo::calc_history(std::deque<qreal> &stock_data_sec,std::deque<qreal
 
    if (stock_data_min.size() <60 && stock_data_sec.size() ==60){ 
         stock_data_min.push_front(Data_Meteo::moyenne(stock_data_sec));
-        std::cout<<"test history  min"<< stock_data_min[0]<<std::endl;
         stock_data_sec.clear();
     }    
                
