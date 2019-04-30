@@ -10,7 +10,7 @@ Repertoire contenant les fichiers de test pour l'algorithme de Zambretti
 Repertoire principal, contenant les fichiers nécessaires pour l'application Meteo
 
 ## Organisation/
-Repertoire contenant des fichiers de Gestion de Projet (Gantt)
+Repertoire contenant des fichiers de Gestion de Projet (Gantt), le rapport et la présentation
 
 ## docs/
 Repertoire contenant le dossier technique Doxygen, 
