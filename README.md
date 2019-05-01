@@ -18,6 +18,8 @@ Consultable ici : <a href="https://mehditag.github.io/Meteo/index.html"> Documen
 
 ## Bienvenue sur l'application Weather Pi
 
+Ce projet a été réalisé par Alix Dumay et Mehdi Taguema 
+
  1. Description du projet :
 
 	Weather Pi est une application météo, qui utilise les données issues d’un sensor BME280 branché en I2C pour afficher une prévision météo valable sur les 4 prochaines heures. L’application permet à l’utilisateur de connaître également la température, la pression et l’humidité mesurées par le capteur ainsi que la date et l’heure. A partir de la deuxième heure de fonctionnement, un historique commence à s’afficher : il présente les données mesurées et la météo prévue au cours des 3 dernières heures.
